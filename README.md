@@ -1,6 +1,18 @@
 Segence Hadoop Docker container
 ===============================
 
+Permission denied at hdfs
+-------------------------
+
+adding below property code to conf/hdfs-site.xml
+
+```
+<property>
+  <name>dfs.permissions</name>
+  <value>false</value>
+</property>
+```
+
 Overview
 --------
 

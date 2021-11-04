@@ -1,8 +1,9 @@
-version: '2'
+version: '3'
 services:
   hadoop-namenode:
     image: segence/hadoop
     container_name: hadoop-namenode
+    restart: always
     hostname: hadoop-namenode
     ports: # HOST:CONTAINER
       - "2222:2222"
@@ -22,8 +23,12 @@ services:
       - ./slaves-config:/config:ro
       - ./deployments:/deployments:ro
     tty: true
+    networks:
+      - hadoop
+
   hadoop-datanode1:
     image: segence/hadoop
+    restart: always
     container_name: hadoop-datanode1
     hostname: hadoop-datanode1
     ports:
@@ -43,3 +48,11 @@ services:
     links:
       - hadoop-namenode
     tty: true
+    networks:
+      - hadoop
+
+networks:
+  hadoop:
+    driver: bridge
+
+
