@@ -1,5 +1,105 @@
 version: '3'
 services:
+  spark-client:
+    image: openjdk:11.0.11-jdk-buster
+    container_name: spark-client
+    tty: true
+#    ports:
+#      - 4040:4040
+    volumes:
+      - /usr/local/src/:/usr/local/src/
+      - /mnt/data/home/docker/docker-hadoop/spark-3.1.1-bin-hadoop2.7/:/spark-3.1.1-bin-hadoop2.7
+      - /mnt/data/home/docker/docker-hadoop/spark-cluster/:/spark-cluster/
+    restart: always
+    networks:
+      - hadoop
+      - proxy
+
+  spark-master:
+    image: openjdk:11.0.11-jdk-buster
+    container_name: spark-master
+    tty: true
+#    ports:
+#      - 4040:4040
+    volumes:
+      - /usr/local/src/:/usr/local/src/
+      - /mnt/data/home/docker/docker-hadoop/spark-3.1.1-bin-hadoop2.7/:/spark-3.1.1-bin-hadoop2.7
+      - /mnt/data/home/docker/docker-hadoop/spark-cluster/:/spark-cluster/
+    restart: always
+    networks:
+      - hadoop
+      - proxy
+  spark-slave1:
+    image: openjdk:11.0.11-jdk-buster
+    container_name: spark-slave1
+    tty: true
+#    ports:
+#      - 4040:4040
+    volumes:
+      - /usr/local/src/:/usr/local/src/
+      - /mnt/data/home/docker/docker-hadoop/spark-3.1.1-bin-hadoop2.7/:/spark-3.1.1-bin-hadoop2.7
+      - /mnt/data/home/docker/docker-hadoop/spark-cluster/:/spark-cluster/
+    restart: always
+    networks:
+      - hadoop
+      - proxy
+  spark-slave2:
+    image: openjdk:11.0.11-jdk-buster
+    container_name: spark-slave2
+    tty: true
+#    ports:
+#      - 4040:4040
+    volumes:
+      - /usr/local/src/:/usr/local/src/
+      - /mnt/data/home/docker/docker-hadoop/spark-3.1.1-bin-hadoop2.7/:/spark-3.1.1-bin-hadoop2.7
+      - /mnt/data/home/docker/docker-hadoop/spark-cluster/:/spark-cluster/
+    restart: always
+    networks:
+      - hadoop
+      - proxy
+  spark-slave3:
+    image: openjdk:11.0.11-jdk-buster
+    container_name: spark-slave3
+    tty: true
+#    ports:
+#      - 4040:4040
+    volumes:
+      - /usr/local/src/:/usr/local/src/
+      - /mnt/data/home/docker/docker-hadoop/spark-3.1.1-bin-hadoop2.7/:/spark-3.1.1-bin-hadoop2.7
+      - /mnt/data/home/docker/docker-hadoop/spark-cluster/:/spark-cluster/
+    restart: always
+    networks:
+      - hadoop
+      - proxy
+  spark-slave4:
+    image: openjdk:11.0.11-jdk-buster
+    container_name: spark-slave4
+    tty: true
+#    ports:
+#      - 4040:4040
+    volumes:
+      - /usr/local/src/:/usr/local/src/
+      - /mnt/data/home/docker/docker-hadoop/spark-3.1.1-bin-hadoop2.7/:/spark-3.1.1-bin-hadoop2.7
+      - /mnt/data/home/docker/docker-hadoop/spark-cluster/:/spark-cluster/
+    restart: always
+    networks:
+      - hadoop
+      - proxy
+  spark-slave5:
+    image: openjdk:11.0.11-jdk-buster
+    container_name: spark-slave5
+    tty: true
+#    ports:
+#      - 4040:4040
+    volumes:
+      - /usr/local/src/:/usr/local/src/
+      - /mnt/data/home/docker/docker-hadoop/spark-3.1.1-bin-hadoop2.7/:/spark-3.1.1-bin-hadoop2.7
+      - /mnt/data/home/docker/docker-hadoop/spark-cluster/:/spark-cluster/
+    restart: always
+    networks:
+      - hadoop
+      - proxy
+
   hadoop-namenode:
     image: segence/hadoop
     container_name: hadoop-namenode
@@ -25,6 +125,7 @@ services:
     tty: true
     networks:
       - hadoop
+      - proxy
 
   hadoop-datanode1:
     image: segence/hadoop
@@ -50,9 +151,11 @@ services:
     tty: true
     networks:
       - hadoop
+      - proxy
 
 networks:
   hadoop:
-    driver: bridge
-
+  proxy:
+     external:
+       name: proxy
 
