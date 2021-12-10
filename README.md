@@ -1,10 +1,16 @@
 Segence Hadoop Docker container
 ===============================
 
+Start cluster here
+
+```
+cluster-setup/local-cluster/docker-compose.yml
+```
+
 Permission denied at hdfs
 -------------------------
 
-adding below property code to conf/hdfs-site.xml
+Adding this code to the end of conf/hdfs-site.xml
 
 ```
 <property>
