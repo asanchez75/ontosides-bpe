@@ -10,7 +10,7 @@ cluster-setup/local-cluster/docker-compose.yml
 Permission denied at hdfs
 -------------------------
 
-Adding this code to the end of conf/hdfs-site.xml
+Adding this code to the end of conf/hdfs-site.xml once logged in *hadoop-namenode* docker
 
 ```
 <property>

@@ -10,6 +10,7 @@ services:
       - /usr/local/src/:/usr/local/src/
       - /mnt/data/home/docker/docker-hadoop/spark-3.1.1-bin-hadoop2.7/:/spark-3.1.1-bin-hadoop2.7
       - /mnt/data/home/docker/docker-hadoop/spark-cluster/:/spark-cluster/
+      - /mnt/data/home/docker/docker-virtuoso-ontosides10/data/:/ontosides10
     restart: always
     networks:
       - hadoop
@@ -25,6 +26,7 @@ services:
       - /usr/local/src/:/usr/local/src/
       - /mnt/data/home/docker/docker-hadoop/spark-3.1.1-bin-hadoop2.7/:/spark-3.1.1-bin-hadoop2.7
       - /mnt/data/home/docker/docker-hadoop/spark-cluster/:/spark-cluster/
+      - /mnt/data/home/docker/docker-virtuoso-ontosides10/data/:/ontosides10
     restart: always
     networks:
       - hadoop
@@ -39,6 +41,7 @@ services:
       - /usr/local/src/:/usr/local/src/
       - /mnt/data/home/docker/docker-hadoop/spark-3.1.1-bin-hadoop2.7/:/spark-3.1.1-bin-hadoop2.7
       - /mnt/data/home/docker/docker-hadoop/spark-cluster/:/spark-cluster/
+      - /mnt/data/home/docker/docker-virtuoso-ontosides10/data/:/ontosides10
     restart: always
     networks:
       - hadoop
@@ -53,6 +56,7 @@ services:
       - /usr/local/src/:/usr/local/src/
       - /mnt/data/home/docker/docker-hadoop/spark-3.1.1-bin-hadoop2.7/:/spark-3.1.1-bin-hadoop2.7
       - /mnt/data/home/docker/docker-hadoop/spark-cluster/:/spark-cluster/
+      - /mnt/data/home/docker/docker-virtuoso-ontosides10/data/:/ontosides10
     restart: always
     networks:
       - hadoop
@@ -67,6 +71,7 @@ services:
       - /usr/local/src/:/usr/local/src/
       - /mnt/data/home/docker/docker-hadoop/spark-3.1.1-bin-hadoop2.7/:/spark-3.1.1-bin-hadoop2.7
       - /mnt/data/home/docker/docker-hadoop/spark-cluster/:/spark-cluster/
+      - /mnt/data/home/docker/docker-virtuoso-ontosides10/data/:/ontosides10
     restart: always
     networks:
       - hadoop
@@ -81,10 +86,12 @@ services:
       - /usr/local/src/:/usr/local/src/
       - /mnt/data/home/docker/docker-hadoop/spark-3.1.1-bin-hadoop2.7/:/spark-3.1.1-bin-hadoop2.7
       - /mnt/data/home/docker/docker-hadoop/spark-cluster/:/spark-cluster/
+      - /mnt/data/home/docker/docker-virtuoso-ontosides10/data/:/ontosides10
     restart: always
     networks:
       - hadoop
       - proxy
+
   spark-slave5:
     image: openjdk:11.0.11-jdk-buster
     container_name: spark-slave5
@@ -95,6 +102,23 @@ services:
       - /usr/local/src/:/usr/local/src/
       - /mnt/data/home/docker/docker-hadoop/spark-3.1.1-bin-hadoop2.7/:/spark-3.1.1-bin-hadoop2.7
       - /mnt/data/home/docker/docker-hadoop/spark-cluster/:/spark-cluster/
+      - /mnt/data/home/docker/docker-virtuoso-ontosides10/data/:/ontosides10
+    restart: always
+    networks:
+      - hadoop
+      - proxy
+
+  spark-slave6:
+    image: openjdk:11.0.11-jdk-buster
+    container_name: spark-slave6
+    tty: true
+#    ports:
+#      - 4040:4040
+    volumes:
+      - /usr/local/src/:/usr/local/src/
+      - /mnt/data/home/docker/docker-hadoop/spark-3.1.1-bin-hadoop2.7/:/spark-3.1.1-bin-hadoop2.7
+      - /mnt/data/home/docker/docker-hadoop/spark-cluster/:/spark-cluster/
+      - /mnt/data/home/docker/docker-virtuoso-ontosides10/data/:/ontosides10
     restart: always
     networks:
       - hadoop
@@ -107,7 +131,7 @@ services:
     hostname: hadoop-namenode
     ports: # HOST:CONTAINER
       - "2222:2222"
-      - "4040:4040"
+#      - "4040:4040"
       - "8020:8020"
       - "8088:8088"
       - "9001:9001"
